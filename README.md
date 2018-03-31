@@ -1,0 +1,2 @@
+# LiriBot
+node bot
