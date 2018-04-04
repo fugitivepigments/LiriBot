@@ -1,2 +1,3 @@
 # LiriBot
-node bot
+
+Application using node.js
