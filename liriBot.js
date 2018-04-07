@@ -65,8 +65,8 @@ inquirer.prompt([{
       name: 'whatMovie',
       //then search for movie...
     }]).then(function(inquirerResponse) {
-      var queryUrl = "http://www.omdbapi.com/?t=" + inquirerResponse.whatMovie + "&y=&plot=short&apikey=trilogy";
-      var mrNobody = "http://www.omdbapi.com/?t=mr+nobody&y=&plot=short&apikey=trilogy";
+      var noInput = inquirerResponse.whatMovie || "Mr+Nobody";
+      var queryUrl = "http://www.omdbapi.com/?t=" + noInput + "&y=&plot=short&apikey=trilogy";
       request(queryUrl, function(error, response, body) {
         if (!error && response.statusCode === 200) {
           console.log('Title: ' + JSON.parse(body).Title);
