@@ -89,23 +89,22 @@ inquirer.prompt([{
       name: 'confirm',
       default: true,
     }]).then(function(inquirerResponse) {
-      var content;
       fs.readFile('random.txt', 'utf8', function(err, data) {
-        content = data;
-      });
-      spotify.search({
-        type: 'track',
-        query: content,
-      }, function(err, data) {
-        if (err) {
-          return console.log('Error occurred: ' + err);
-        }
-        console.log(JSON.stringify(data.tracks.items[0].name, null, 2));
-        console.log(JSON.stringify(data.tracks.items[0].album.artists[0].name, null, 2));
-        console.log(JSON.stringify(data.tracks.items[0].external_urls.spotify, null, 2));
-        console.log(JSON.stringify(data.tracks.items[0].album.name, null, 2));
+        spotify.search({
+          type: 'track',
+          query: data,
+        }, function(err, data) {
+          if (err) {
+            return console.log('Error occurred: ' + err);
+          }
+          console.log(JSON.stringify(data.tracks.items[0].name, null, 2));
+          console.log(JSON.stringify(data.tracks.items[0].album.artists[0].name, null, 2));
+          console.log(JSON.stringify(data.tracks.items[0].external_urls.spotify, null, 2));
+          console.log(JSON.stringify(data.tracks.items[0].album.name, null, 2));
 
-      })
+        })
+      });
+
     })
   }
 });
